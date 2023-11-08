@@ -1,0 +1,94 @@
+@import url('https://fonts.cdnfonts.com/css/earth-orbiter');
+body {
+    margin:auto;
+    background: linear-gradient(to right, aquamarine, #10a9e2);
+    background-attachment: fixed;
+    
+}
+h1 {
+    font-family: 'Earth Orbiter Extra-Bold', sans-serif;
+    margin-top: 30px;
+    text-align: center;
+    font-size: 5rem;
+}
+input::placeholder {
+    
+    text-align: center;
+    color: black;
+    font-weight: bold;
+}
+#inputError{
+    padding: 4px;
+    margin-top: 10px;
+    color: red;
+}
+form {
+
+    border: 1px solid black;
+    padding: 20px;
+    border-width: 5px;;
+    width: 500px;
+    margin-top: 50px;
+    margin: auto;
+    text-align: center;
+}
+fieldset {
+    font-weight: 500;
+    font-family: 'Earth Orbiter Extra-Bold', sans-serif;
+    font-size: x-large;
+    border:none;
+}
+label {
+    font-family: 'Earth Orbiter Extra-Bold', sans-serif;
+    padding: 5px;
+}
+label, input {
+    display: block;
+}
+input {
+    
+    margin: auto;
+}
+#table {
+    margin:auto;
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 500px;
+    max-width: 1000px;
+}
+table tr, th {
+    border: 1px solid black;
+}
+tr {
+    background: #10a9e2;
+}
+tr, th {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+tr::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+}
+th::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+}
+tr:nth-child(1) {
+    
+    background: #042c84;
+    border: none;
+    overflow: scroll;
+    top: 0;
+    position: sticky;
+    color: white;
+}
+th:nth-child(1) {
+    background: #042c84;
+    border: none;
+    left: 0;
+    overflow: scroll;
+    position: sticky;
+    color: white;
+}
+th:hover {
+    background-color: #0086df;
+}
