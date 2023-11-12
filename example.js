@@ -1,36 +1,26 @@
-let minCol = 0;
-let minRow = 0;
-let maxCol = 0;
-let maxRow = 0;
-
 jQuery.validator.setDefaults ({
-    debug:false,
+    debug:true,
     success:"valid"
 
 });
 $(document).ready(function() {
-  //alert("submitted");
-  $("#minColSlider").slider({
-    slide: function(event, ui) {
-      $("sliderDisplay").html(ui.value);
-    }
-  }),
+    alert("submitted");
   $("#form").validate({
     rules: {
       minCol: {
-          required: false,
+          integer: true,
           range: [-50, 50]
       },
       maxCol: {
-        required: false,
+        integer: true,
         range: [-50, 50]
       },
       minRow: {
-        required: false,
+        integer: true,
         range: [-50, 50]
       },
       maxRow: {
-        required: false,
+        integer: true,
         range: [-50, 50]
       }, 
     },
@@ -42,7 +32,7 @@ $(document).ready(function() {
       }
     }, 
     submitHandler: function(form) {
-    //alert("Submitted");
+    alert("Submitted");
     minCol = document.getElementById("minCol").value;
     maxCol = document.getElementById("maxCol").value;
     minRow = document.getElementById("minRow").value;

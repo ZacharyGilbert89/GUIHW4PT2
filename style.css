@@ -23,13 +23,12 @@ input::placeholder {
     color: red;
 }
 form {
-
+    margin: auto;
     border: 1px solid black;
     padding: 20px;
     border-width: 5px;;
     width: 500px;
     margin-top: 50px;
-    margin: auto;
     text-align: center;
 }
 fieldset {
@@ -91,4 +90,8 @@ th:nth-child(1) {
 }
 th:hover {
     background-color: #0086df;
+}
+#minColSlider{
+    margin:auto;
+    width: 100px;
 }
