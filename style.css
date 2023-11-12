@@ -50,6 +50,7 @@ input {
 }
 #table {
     margin:auto;
+    width: 100%;
     overflow-x: auto;
     overflow-y: auto;
     max-height: 500px;
@@ -90,8 +91,4 @@ th:nth-child(1) {
 }
 th:hover {
     background-color: #0086df;
-}
-#minColSlider{
-    margin:auto;
-    height: 10px;
 }

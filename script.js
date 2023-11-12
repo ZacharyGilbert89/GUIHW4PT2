@@ -3,22 +3,42 @@ let minRow = 0;
 let maxCol = 0;
 let maxRow = 0;
 
-jQuery.validator.setDefaults ({
-    debug:false,
-    success:"valid"
-
+$(function(){
+  $("#minColSlider").slider({
+    min: -50,
+    max: 50,
+    slide: function (event, ui) {
+      $("#minCol").val(ui.value);
+      $("input").trigger("submit");
+    },
+  });
+  $("#maxColSlider").slider({
+    min: -50,
+    max: 50,
+    slide: function (event, ui) {
+      $("#maxCol").val(ui.value);
+      $("input").trigger("submit");
+    },
+  });
+  $("#minRowSlider").slider({
+    min: -50,
+    max: 50,
+    slide: function (event, ui) {
+      $("#minRow").val(ui.value);
+      $("input").trigger("submit");
+    },
+  });
+  $("#maxRowSlider").slider({
+    min: -50,
+    max: 50,
+    slide: function (event, ui) {
+      $("#maxRow").val(ui.value);
+      $("input").trigger("submit");
+    },
+  });
 });
 $(document).ready(function() {
-  //alert("submitted");
-  $(minColSlider).blur(function(){
-    $("minColSlider").slider("values", 0, parseInt($(this).val()));
-  })
-  $("#minColSlider").slider({
-    slide: function(event, ui) {
-      $(minColSlider).val(ui.values[0]);
-    }
-  })
-  //https://stackoverflow.com/questions/2860494/want-to-bind-an-input-field-to-a-jquery-ui-slider-handle
+  
   $("#form").validate({
     rules: {
       minCol: {
