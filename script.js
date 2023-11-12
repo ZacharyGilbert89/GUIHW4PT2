@@ -10,11 +10,15 @@ jQuery.validator.setDefaults ({
 });
 $(document).ready(function() {
   //alert("submitted");
+  $(minColSlider).blur(function(){
+    $("minColSlider").slider("values", 0, parseInt($(this).val()));
+  })
   $("#minColSlider").slider({
     slide: function(event, ui) {
-      $("sliderDisplay").html(ui.value);
+      $(minColSlider).val(ui.values[0]);
     }
-  }),
+  })
+  //https://stackoverflow.com/questions/2860494/want-to-bind-an-input-field-to-a-jquery-ui-slider-handle
   $("#form").validate({
     rules: {
       minCol: {
