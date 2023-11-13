@@ -45,12 +45,13 @@ label, input {
     display: block;
 }
 input {
-    
+    width:150px;
     margin: auto;
 }
 #table {
     margin:auto;
-    width: 100%;
+    width:fit-content;
+    margin-left: auto;
     overflow-x: auto;
     overflow-y: auto;
     max-height: 500px;
@@ -91,4 +92,10 @@ th:nth-child(1) {
 }
 th:hover {
     background-color: #0086df;
+}
+#minColSlider, #maxColSlider,#minRowSlider, #maxRowSlider {
+    margin:auto;
+    background:#0086df;
+    border-color:black;
+    width: 150px;
 }

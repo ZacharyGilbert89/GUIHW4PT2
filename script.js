@@ -17,6 +17,7 @@ $(function(){
     max: 50,
     slide: function (event, ui) {
       $("#maxCol").val(ui.value);
+
       $("input").trigger("submit");
     },
   });
