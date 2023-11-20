@@ -38,17 +38,25 @@ $(function(){
     },
   });
 });
+$.validator.addMethod("greaterThan", function(value, element, param){
+  return this.optional(element) || parseInt(value) >= parseInt($(param).val());
+});
+$.validator.addMethod("noDecimal", function(value, element){
+return !(value % 1);
+});
 $(document).ready(function() {
   
   $("#form").validate({
     rules: {
       minCol: {
           required: false,
+          noDecimal: true,
           range: [-50, 50]
       },
       maxCol: {
         required: false,
-        range: [-50, 50]
+        range: [-50, 50],
+        greaterThan: "#minCol"
       },
       minRow: {
         required: false,
@@ -56,7 +64,8 @@ $(document).ready(function() {
       },
       maxRow: {
         required: false,
-        range: [-50, 50]
+        range: [-50, 50],
+        greaterThan: "#minRow"
       }, 
     },
     messages: {
@@ -64,6 +73,23 @@ $(document).ready(function() {
           required: "Please Enter a Minimum Column",
           integer: "Please Enter an Integer",
           range: "Please Stay Between the Ranges of (-50 to 50)"
+      },
+      maxCol: {
+        required: "Please Enter a Maximum Column",
+        integer: "Please Enter an Integer",
+        range: "Please Stay Between the Ranges of (-50 to 50)",
+        greaterThan: "Cannot have a minimum exceeding a maximum"
+      },
+      minRow: {
+        required: "Please Enter a Minimum Row",
+        integer: "Please Enter an Integer",
+        range: "Please Stay Between the Ranges of (-50 to 50)"
+      },
+      maxRow: {
+        required: "Please Enter a Maximum Row",
+        integer: "Please Enter an Integer",
+        range: "Please Stay Between the Ranges of (-50 to 50)",
+        greaterThan: "Cannot have a minimum exceeding a maximum"
       }
     }, 
     submitHandler: function(form) {
