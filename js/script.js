@@ -44,8 +44,9 @@ $.validator.addMethod("greaterThan", function(value, element, param){
 $.validator.addMethod("noDecimal", function(value, element){
 return !(value % 1);
 });
-$(document).ready(function() {
-  
+$(document).ready(function() 
+{
+  $("#tabs").tabs();
   $("#form").validate({
     rules: {
       minCol: {
@@ -92,18 +93,21 @@ $(document).ready(function() {
         greaterThan: "Cannot have a minimum exceeding a maximum"
       }
     }, 
-    submitHandler: function(form) {
-    //alert("Submitted");
-    minCol = document.getElementById("minCol").value;
-    maxCol = document.getElementById("maxCol").value;
-    minRow = document.getElementById("minRow").value;
-    maxRow = document.getElementById("maxRow").value;
-      
-    const table = document.createElement("table");
+    
+    submitHandler: function(form) 
+    {
+      //Creates the TABLE
+      const table = document.createElement("table");
       const tabledata = document.getElementById("table");
       tabledata.innerHTML = "";
+
+      minCol = document.getElementById("minCol").value;
+      maxCol = document.getElementById("maxCol").value;
+      minRow = document.getElementById("minRow").value;
+      maxRow = document.getElementById("maxRow").value;
       minRow -= 1;
       minCol -= 1;
+
       for (let i = minRow; i <= maxRow; i++) {
         row = document.createElement("tr");
         for (let j = minCol; j <= maxCol; j++) {
@@ -127,6 +131,21 @@ $(document).ready(function() {
         table.appendChild(row);
       }
       tabledata.appendChild(table);
+      //--------------------------------------------
     }
   });
+});
+var num_tabs = $("tabs ul li").length + 1;
+$("#addTab").click(function(){
+  $("#tabs ul").append(
+    "<li><a href='#tab" + num_tabs + "'>tab " + num_tabs + "</a></li>"
+  );
+  $("#tabs").append(
+    "<div id='tab" + num_tabs + "'></div>"
+  );
+  num_tabs++;
+  $("#tabs").tabs("refresh");
+  // const tab = document.querySelector('tab'+num_tabs);
+  // const tableCopy = document.querySelector('table'); //gets Copy of Mult Table
+  // tab.html(tableCopy);
 });
