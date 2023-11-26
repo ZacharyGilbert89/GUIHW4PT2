@@ -1,9 +1,11 @@
 @import url('https://fonts.cdnfonts.com/css/earth-orbiter');
 body {
     margin:auto;
-    background: linear-gradient(to right, aquamarine, #10a9e2);
+    background: linear-gradient(-215deg, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 5s ease infinite;
+	height: 100vh;
     background-attachment: fixed;
-    
 }
 h1 {
     font-family: 'Earth Orbiter Extra-Bold', sans-serif;
@@ -99,9 +101,63 @@ th:hover {
     border-color:black;
     width: 150px;
 }
-#dialog label, #dialog input { display:block; }
-  #dialog label { margin-top: 0.5em; }
-  #dialog input, #dialog textarea { width: 95%; }
-  #tabs { margin-top: 1em; }
-  #tabs li .ui-icon-close { float: left; margin: 0.4em 0.2em 0 0; cursor: pointer; }
-  #add_tab { cursor: pointer; }
+.closeTabs {
+    margin-top: 1rem;
+    background-color: white;
+    width: 5rem; 
+    height: 2.2rem;
+    cursor: pointer; 
+    float:right;
+}
+#addTab {
+    float:left;
+    margin-top: 1rem;
+    background-color: none;
+    width: 5rem; 
+    height: 2.2rem;
+    cursor: pointer; 
+}
+#tabs ul {
+    border:none;
+    background:none;
+}
+
+#tabs {
+    display:block;
+    background: linear-gradient(to right,#ee7752, #e73c7e);
+    height: 50%;
+    border:none;
+    margin-top: 2em; 
+    overflow-x: auto; 
+    overflow-y: auto;
+}
+#tabs li .ui-icon-close { 
+    cursor: pointer; 
+}
+#tabs li {
+    padding: none;
+    border-radius:15%;
+    height: auto;
+    background: darkgrey;
+    width: 90px;
+}
+#tabs a {
+    color:white;
+}
+#tabs .ui-tabs-active{
+    background-color: grey;
+}
+#tabs table{
+    margin:auto;
+}
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}

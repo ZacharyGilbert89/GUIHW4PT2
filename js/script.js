@@ -46,7 +46,6 @@ return !(value % 1);
 });
 $(document).ready(function() 
 {
-  $("#tabs").tabs();
   $("#form").validate({
     rules: {
       minCol: {
@@ -137,15 +136,28 @@ $(document).ready(function()
 });
 var num_tabs = $("tabs ul li").length + 1;
 $("#addTab").click(function(){
+  $("#tabs").tabs();
   $("#tabs ul").append(
-    "<li><a href='#tab" + num_tabs + "'>tab " + num_tabs + "</a></li>"
+    "<li><input type='checkbox'><a href='#tab-" + num_tabs + "'>TAB " + "</a><span class = 'ui-icon ui-icon-close'>Remove</span></li>"
   );
-  $("#tabs").append(
-    "<div id='tab" + num_tabs + "'></div>"
-  );
+  $("#tabs").append('<div id="tab-' + num_tabs + '">' + $("#table").html() + "</div>");
   num_tabs++;
   $("#tabs").tabs("refresh");
-  // const tab = document.querySelector('tab'+num_tabs);
-  // const tableCopy = document.querySelector('table'); //gets Copy of Mult Table
-  // tab.html(tableCopy);
 });
+var tabs = $("#tabs").tabs();
+tabs.delegate("span.ui-icon-close", "click", function() {
+  $("#tabs").tabs("refresh");
+  var panelId = $(this).closest("li").remove().attr("aria-controls");
+  $("#" + panelId).remove();
+  tabs.tabs("refresh");
+});
+$("#deleteSelected").on("click",function(){
+  $("#tabs").tabs("refresh");
+  $("input:checkbox").each(function() {
+      if ($(this).is(":checked")) {
+          $(this).parent().remove();
+      }
+  });
+  $("#tabs").tabs("refresh");
+});
+
