@@ -1,13 +1,12 @@
 @import url('https://fonts.cdnfonts.com/css/earth-orbiter');
 body {
     margin:auto;
-    width: 100vw;
+    width: auto;
     backdrop-filter: blur(10px);
     background: linear-gradient(-45deg, #23a6d5,#23a6d5, #a700df, #23d5ab,#23d5ab);
-    border: 5px solid black;
 	background-size: 400% 400%;
 	animation: gradient 10s ease-in-out infinite;
-	height: 100vh;
+	height: auto;
     background-attachment: fixed;
 }
 h1 {
@@ -34,6 +33,7 @@ form {
     border-width: 5px;;
     width: 500px;
     margin-top: 50px;
+    margin-bottom: 20px;
     text-align: center;
 }
 fieldset {
@@ -121,18 +121,20 @@ th:hover {
     cursor: pointer; 
 }
 #tabs ul {
+    
     border:none;
     background:none;
 }
-
 #tabs {
+    background:transparent;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5%;
     display:block;
+    border: none;
     margin-left: -5px;
     width: 100vw;
     height: 50%;
     margin-top: 11%;
-    background: linear-gradient(to right,#ee7752, #e73c7e);
-    border: 5px solid black;
     overflow-x: auto; 
     overflow-y: auto;
 }
@@ -141,6 +143,7 @@ th:hover {
 }
 #tabs li {
     padding: none;
+    position:sticky;
     border-radius:15%;
     height: auto;
     background: white;
@@ -151,10 +154,11 @@ th:hover {
 }
 #tabs .ui-tabs-active{
     color:white;
-    background-color:#8823d5;
+    background-color:#b3b3b3;
 }
 #tabs table{
     margin:auto;
+    width:fit-content;
 }
 @keyframes gradient {
 	0% {
