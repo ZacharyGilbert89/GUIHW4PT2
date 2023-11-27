@@ -1,7 +1,10 @@
 @import url('https://fonts.cdnfonts.com/css/earth-orbiter');
 body {
     margin:auto;
+    backdrop-filter: blur(10px);
     background: linear-gradient(-215deg, #23a6d5, #23d5ab);
+    border: 5px solid black;
+    border-bottom:5px solid black;
 	background-size: 400% 400%;
 	animation: gradient 5s ease infinite;
 	height: 100vh;
@@ -124,6 +127,7 @@ th:hover {
 
 #tabs {
     display:block;
+    margin-top: 5-;
     background: linear-gradient(to right,#ee7752, #e73c7e);
     height: 50%;
     border:none;
