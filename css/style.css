@@ -1,12 +1,12 @@
 @import url('https://fonts.cdnfonts.com/css/earth-orbiter');
 body {
     margin:auto;
+    width: 100vw;
     backdrop-filter: blur(10px);
-    background: linear-gradient(-215deg, #23a6d5, #23d5ab);
+    background: linear-gradient(-45deg, #23a6d5,#23a6d5, #a700df, #23d5ab,#23d5ab);
     border: 5px solid black;
-    border-bottom:5px solid black;
 	background-size: 400% 400%;
-	animation: gradient 5s ease infinite;
+	animation: gradient 10s ease-in-out infinite;
 	height: 100vh;
     background-attachment: fixed;
 }
@@ -127,11 +127,12 @@ th:hover {
 
 #tabs {
     display:block;
-    margin-top: 5-;
-    background: linear-gradient(to right,#ee7752, #e73c7e);
+    margin-left: -5px;
+    width: 100vw;
     height: 50%;
-    border:none;
-    margin-top: 2em; 
+    margin-top: 11%;
+    background: linear-gradient(to right,#ee7752, #e73c7e);
+    border: 5px solid black;
     overflow-x: auto; 
     overflow-y: auto;
 }
