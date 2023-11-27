@@ -100,7 +100,7 @@ th:hover {
 }
 #minColSlider, #maxColSlider,#minRowSlider, #maxRowSlider {
     margin:auto;
-    background:#0086df;
+    background: linear-gradient(-45deg, #23a6d5,#23a6d5, #a700df, #23d5ab,#23d5ab);
     border-color:black;
     width: 150px;
 }
@@ -134,9 +134,16 @@ th:hover {
     margin-left: -5px;
     width: 100vw;
     height: 50%;
-    margin-top: 11%;
+    margin-top: 1%;
     overflow-x: auto; 
     overflow-y: auto;
+}
+#tabs div {
+    margin: auto;
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 500px;
+    max-width: 1000px;
 }
 #tabs li .ui-icon-close { 
     cursor: pointer; 

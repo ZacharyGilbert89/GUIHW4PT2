@@ -134,15 +134,19 @@ $(document).ready(function()
     }
   });
 });
+
 var num_tabs = $("tabs ul li").length + 1;
 $("#addTab").click(function(){
   $("#tabs").tabs();
+  const elements = document.querySelectorAll('#tabs ul li');
+  const count = elements.length;
   $("#tabs ul").append(
     "<li><input type='checkbox'><a href='#tab-" + num_tabs + "'>TAB " + "</a><span class = 'ui-icon ui-icon-close'>Remove</span></li>"
   );
   $("#tabs").append('<div id="tab-' + num_tabs + '">' + $("#table").html() + "</div>");
   num_tabs++;
   $("#tabs").tabs("refresh");
+  $("#tabs").tabs({ active: (count - 1) });
 });
 var tabs = $("#tabs").tabs();
 tabs.delegate("span.ui-icon-close", "click", function() {
