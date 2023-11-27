@@ -155,9 +155,9 @@ $("#deleteSelected").on("click",function(){
   $("#tabs").tabs("refresh");
   $("input:checkbox").each(function() {
       if ($(this).is(":checked")) {
-          $(this).parent().remove();
+        var panelId = $(this).closest("li").remove().attr("aria-controls");
+        $("#" + panelId).remove();
       }
   });
-  $("#tabs").tabs("refresh");
 });
 

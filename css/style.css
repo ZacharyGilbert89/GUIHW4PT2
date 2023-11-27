@@ -138,14 +138,15 @@ th:hover {
     padding: none;
     border-radius:15%;
     height: auto;
-    background: darkgrey;
+    background: white;
     width: 90px;
 }
 #tabs a {
-    color:white;
+    color:black;
 }
 #tabs .ui-tabs-active{
-    background-color: grey;
+    color:white;
+    background-color:#8823d5;
 }
 #tabs table{
     margin:auto;
