@@ -11,6 +11,21 @@ let minRow = 0;
 let maxCol = 0;
 let maxRow = 0;
 
+$(document).ready(function (){
+  //Clears previous values when user enters a new value
+  $("#minCol").on("focus", function () {
+    $(this).val("");
+  });
+  $("#maxCol").on("focus", function () {
+    $(this).val(""); 
+  });
+  $("#minRow").on("focus", function () {
+    $(this).val(""); 
+  });
+  $("#maxRow").on("focus", function () {
+    $(this).val(""); 
+  });
+});
 //Sliders
 $(function(){
   $("#minColSlider").slider({
@@ -74,19 +89,6 @@ $(function(){
       $("input").trigger("submit");
     }
   });
-  //Clears previous values when user enters a new value
-  $("#minCol").on("focus", function () {
-    $(this).val("");
-  });
-  $("#maxCol").on("focus", function () {
-    $(this).val(""); 
-  });
-  $("#minRow").on("focus", function () {
-    $(this).val(""); 
-  });
-  $("#maxRow").on("focus", function () {
-    $(this).val(""); 
-  });
 });
 //validators
 $.validator.addMethod("greaterThan", function(value, element, param){//makes sure that a min value doesnt exceed a max value
@@ -97,6 +99,7 @@ return !(value % 1);
 });
 $(document).ready(function() 
 {
+  
   $("#form").validate({
     rules: {
       minCol: {
