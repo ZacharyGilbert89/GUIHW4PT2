@@ -1,3 +1,12 @@
+<!--
+File: index.html
+GUI Assignment: HW4
+Zachary Gilbert, UMass Lowell Computer Science,
+Zachary_Gilbert@student.uml.edu
+Copyright (c) 2023 by Zachary Gilbert. All rights reserved. May be freely copied or
+excerpted for educational purposes with credit to the author.
+updated by ZG on December 1, 2023 at 11:30 AM
+-->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,28 +21,28 @@
   
   <body>
     <div class="heading">
-      <h1>Multiplication Table</h1>
+      <h1>Multiplication Table</h1><!--Heading-->
     </div>
     <form id="form">
-      <fieldset>Values for Multiplication Table</fieldset>
-        <label for="minCol">Minimum Column Value:</label>
+      <fieldset>Values for Multiplication Table</fieldset><!--Title for form-->
+        <label for="minCol">Minimum Column Value:</label><!--Label for minCol-->
         <input type="number" id="minCol" name="minCol" value = 0><br>
-        <div id = "minColSlider" class = "slider"></div>
-        <label for="maxCol">Maximum Column Value:</label>
+        <div id = "minColSlider" class = "slider"></div><!--Slider-->
+        <label for="maxCol">Maximum Column Value:</label><!--Label for maxCol-->
         <input type="number" id="maxCol" name="maxCol" value = 0><br>
-        <div id = "maxColSlider" class = "slider"></div>
-        <label for="minRow">Minimum Row Value:</label>
+        <div id = "maxColSlider" class = "slider"></div><!--Slider-->
+        <label for="minRow">Minimum Row Value:</label><!--Label for minRow-->
         <input type="number" id="minRow" name="minRow" value = 0><br>
-        <div id = "minRowSlider" class = "slider"></div>
-        <label for="maxRow">Maximum Row Value:</label>
+        <div id = "minRowSlider" class = "slider"></div><!--Slider-->
+        <label for="maxRow">Maximum Row Value:</label><!--Label for maxRow-->
         <input type="number" id="maxRow" name="maxRow" value = 0><br>
-        <div id = "maxRowSlider" class = "slider"></div>
-        <input id="addTab" type="button" value="Make Tab"/>
-        <button class="closeTabs" type="button" id="deleteSelected">Delete Selected</button>
+        <div id = "maxRowSlider" class = "slider"></div><!--Slider-->
+        <input id="addTab" type="button" value="Make Tab"/><!--Button for making tab-->
+        <button class="closeTabs" type="button" id="deleteSelected">Delete Selected</button><!--Button for selecting and deleting tabs-->
         <p id = "inputError"></p>
       </form>
-      <div id="table"></div>
-      <div id="tabs">
+      <div id="table"></div><!--Div for table-->
+      <div id="tabs"><!--Div for tabs-->
         <ul>
           <li>
 

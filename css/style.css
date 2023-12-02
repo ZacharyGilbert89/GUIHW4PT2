@@ -1,22 +1,28 @@
-@import url('https://fonts.cdnfonts.com/css/earth-orbiter');
+/* File: style.css
+GUI Assignment: HW4
+Zachary Gilbert, UMass Lowell Computer Science,
+Zachary_Gilbert@student.uml.edu
+Copyright (c) 2023 by Zachary Gilbert. All rights reserved. May be freely copied or
+excerpted for educational purposes with credit to the author.
+updated by ZG on December 1, 2023 at 11:30 AM */
+@import url('https://fonts.cdnfonts.com/css/earth-orbiter');/*Font import*/
 body {
-    margin:auto;
-    width: auto;
-    backdrop-filter: blur(10px);
-    background: linear-gradient(-45deg, #23a6d5,#23a6d5, #a700df, #23d5ab,#23d5ab);
+    margin:auto;/*Centers*/
+    width: auto;/*Fills screen*/
+    backdrop-filter: blur(10px);/*Blur effect in background*/
+    background: linear-gradient(-45deg, #23a6d5,#23a6d5, #a700df, #23d5ab,#23d5ab);/*Background Gradient*/
 	background-size: 400% 400%;
-	animation: gradient 10s ease-in-out infinite;
-	height: auto;
+	animation: gradient 10s ease-in-out infinite;/*Animation Call*/
+	height: auto;/*Fills screen*/
     background-attachment: fixed;
 }
 h1 {
-    font-family: 'Earth Orbiter Extra-Bold', sans-serif;
+    font-family: 'Earth Orbiter Extra-Bold', sans-serif;/*Font*/
     margin-top: 30px;
     text-align: center;
     font-size: 5rem;
 }
-input::placeholder {
-    
+input::placeholder {/*Sample input placeholding text*/
     text-align: center;
     color: black;
     font-weight: bold;
@@ -26,7 +32,7 @@ input::placeholder {
     margin-top: 10px;
     color: red;
 }
-form {
+form {/*Form styling for input*/
     margin: auto;
     border: 1px solid black;
     padding: 20px;
@@ -36,31 +42,31 @@ form {
     margin-bottom: 20px;
     text-align: center;
 }
-fieldset {
+fieldset {/*Title for form*/
     font-weight: 500;
     font-family: 'Earth Orbiter Extra-Bold', sans-serif;
     font-size: x-large;
     border:none;
 }
-label {
+label {/*Styling for inputs*/
     font-family: 'Earth Orbiter Extra-Bold', sans-serif;
     padding: 5px;
 }
 label, input {
     display: block;
 }
-input {
+input {/*Styling for input boxes*/
     width:150px;
     margin: auto;
 }
-#table {
+#table {/*Centers table*/
     margin:auto;
     width:fit-content;
     margin-left: auto;
     overflow-x: auto;
     overflow-y: auto;
-    max-height: 500px;
-    max-width: 1000px;
+    max-height: 500px;/*Sets max height so table doesnt go beyond view*/
+    max-width: 1000px;/*Sets max width so table doesnt go beyond view*/
 }
 table tr, th {
     border: 1px solid black;
@@ -78,7 +84,7 @@ tr::-webkit-scrollbar {
 th::-webkit-scrollbar {
     display: none;  /* Safari and Chrome */
 }
-tr:nth-child(1) {
+tr:nth-child(1) {/*Makes the row sticky so when user scrolls, the row stays the same position in the viewport*/
     
     background: #042c84;
     border: none;
@@ -87,7 +93,7 @@ tr:nth-child(1) {
     position: sticky;
     color: white;
 }
-th:nth-child(1) {
+th:nth-child(1) {/*Makes the column sticky so when user scrolls, the column stays the same position in the viewport*/
     background: #042c84;
     border: none;
     left: 0;
@@ -95,16 +101,16 @@ th:nth-child(1) {
     position: sticky;
     color: white;
 }
-th:hover {
+th:hover {/*Hover change color*/
     background-color: #0086df;
 }
-#minColSlider, #maxColSlider,#minRowSlider, #maxRowSlider {
+#minColSlider, #maxColSlider,#minRowSlider, #maxRowSlider { /*Slider styling*/
     margin:auto;
     background: linear-gradient(-45deg, #23a6d5,#23a6d5, #a700df, #23d5ab,#23d5ab);
     border-color:black;
     width: 150px;
 }
-.closeTabs {
+.closeTabs { /*Close tab button*/
     margin-top: 1rem;
     background-color: white;
     width: 5rem; 
@@ -112,7 +118,7 @@ th:hover {
     cursor: pointer; 
     float:right;
 }
-#addTab {
+#addTab { /*Add tab button*/
     float:left;
     margin-top: 1rem;
     background-color: none;
@@ -120,12 +126,11 @@ th:hover {
     height: 2.2rem;
     cursor: pointer; 
 }
-#tabs ul {
-    
+#tabs ul { /*Makes tab have no background or styling*/
     border:none;
     background:none;
 }
-#tabs {
+#tabs {/*Tab styling*/
     background:transparent;
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 5%;
@@ -138,17 +143,17 @@ th:hover {
     overflow-x: auto; 
     overflow-y: auto;
 }
-#tabs div {
+#tabs div { /*centers tab div*/
     margin: auto;
     overflow-x: auto;
     overflow-y: auto;
     max-height: 500px;
     max-width: 1000px;
 }
-#tabs li .ui-icon-close { 
+#tabs li .ui-icon-close {  /*clickable x button to show its clickable*/
     cursor: pointer; 
 }
-#tabs li {
+#tabs li { /*keeps tabs on viewport*/
     padding: none;
     position:sticky;
     border-radius:15%;
@@ -156,18 +161,18 @@ th:hover {
     background: white;
     width: 90px;
 }
-#tabs a {
+#tabs a { /*Sets tab name to black*/
     color:black;
 }
-#tabs .ui-tabs-active{
+#tabs .ui-tabs-active{/*Active tab has different shade*/
     color:white;
     background-color:#b3b3b3;
 }
-#tabs table{
+#tabs table{ /*Centers tabs on screen*/
     margin:auto;
     width:fit-content;
 }
-@keyframes gradient {
+@keyframes gradient { /*Animation for background*/
 	0% {
 		background-position: 0% 50%;
 	}
