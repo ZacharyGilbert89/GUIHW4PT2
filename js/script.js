@@ -52,69 +52,33 @@ $(function(){
       $("input").trigger("submit");//submit when user done dragging
     },
   });
-  //These will make it so when the user enters a value manually, and doesnt enter something, it will default back to 0, if it is entered, and left blank it will default to whatever was previously
-  $("#minCol").on("focus", function () {
-    $(this).val("");
-  });
-  $("#minCol").on("focusout", function () {
-    if($(this).val() == "") {
-      $(this).val(newMinCol);
-      $("input").trigger("submit");//force update
-    }
-  });
-  $("#maxCol").on("focus", function () {
-    $(this).val(""); 
-  });
-  $("#maxCol").on("focusout", function () {
-    if($(this).val() == "") {
-      $(this).val(newMaxCol);
-      $("input").trigger("submit");//force update
-    }
-  });
-  $("#minRow").on("focus", function () {
-    $(this).val(""); 
-  });
-  $("#minRow").on("focusout", function () {
-    if($(this).val() == "") {
-      $(this).val(newMinRow);
-      $("input").trigger("submit");//force update
-    }
-  });
-  $("#maxRow").on("focus", function () {
-    $(this).val(""); 
-  });
-  $("#maxRow").on("focusout", function () {
-    if($(this).val() == "") {
-      $(this).val(newMaxRow);
-      $("input").trigger("submit");//force update
-    }
-  });
+  
   //Double Binds, so when the user enters a value into the text box, the slider changes with it
-  $("#minCol").on("change", function () {
+  $("#minCol").on("keyup", function () {
     var inputValue = parseInt($(this).val());
-    if (!isNaN(inputValue)) {
-      $("#minColSlider").slider("value", inputValue);
+    $("#minColSlider").slider("value", inputValue);
+    if ($("#form").valid() == true) {
       $("input").trigger("submit");
     }
   });
-  $("#maxCol").on("change", function () {
+  $("#maxCol").on("keyup", function () {
     var inputValue = parseInt($(this).val());
-    if (!isNaN(inputValue)) {
-      $("#maxColSlider").slider("value", inputValue);
+    $("#maxColSlider").slider("value", inputValue);
+    if ($("#form").valid() == true) {
       $("input").trigger("submit");
     }
   });
-  $("#minRow").on("change", function () {
+  $("#minRow").on("keyup", function () {
     var inputValue = parseInt($(this).val());
-    if (!isNaN(inputValue)) {
-      $("#minRowSlider").slider("value", inputValue);
+    $("#minRowSlider").slider("value", inputValue);
+    if ($("#form").valid() == true) {
       $("input").trigger("submit");
     }
   });
-  $("#maxRow").on("change", function () {
+  $("#maxRow").on("keyup", function () {
     var inputValue = parseInt($(this).val());
-    if (!isNaN(inputValue)) {
-      $("#maxRowSlider").slider("value", inputValue);
+    $("#maxRowSlider").slider("value", inputValue);
+    if ($("#form").valid() == true) {
       $("input").trigger("submit");
     }
   });
