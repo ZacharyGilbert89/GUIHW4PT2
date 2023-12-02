@@ -159,7 +159,7 @@ th:hover {/*Hover change color*/
     border-radius:15%;
     height: auto;
     background: white;
-    width: 90px;
+    width: auto;
 }
 #tabs a { /*Sets tab name to black*/
     color:black;

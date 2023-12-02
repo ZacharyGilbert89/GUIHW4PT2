@@ -13,6 +13,7 @@ let maxRow = 0;
 
 //Sliders
 $(function(){
+  
   $("#minColSlider").slider({
     min: -50, //min-max values
     max: 50,
@@ -45,6 +46,39 @@ $(function(){
       $("input").trigger("submit");//submit when user done dragging
     },
   });
+  //These will make it so when the user enters a value manually, and doesnt enter something, it will default back to 0, if it is entered, and left blank it will default to 0
+  $("#minCol").on("focus", function () {
+    $(this).val("");
+  });
+  $("#minCol").on("focusout", function () {
+    if($(this).val() == "") {
+      $(this).val("0");
+    }
+  });
+  $("#maxCol").on("focus", function () {
+    $(this).val(""); 
+  });
+  $("#maxCol").on("focusout", function () {
+    if($(this).val() == "") {
+      $(this).val("0");
+    }
+  });
+  $("#minRow").on("focus", function () {
+    $(this).val(""); 
+  });
+  $("#minRow").on("focusout", function () {
+    if($(this).val() == "") {
+      $(this).val("0");
+    }
+  });
+  $("#maxRow").on("focus", function () {
+    $(this).val(""); 
+  });
+  $("#maxRow").on("focusout", function () {
+    if($(this).val() == "") {
+      $(this).val("0");
+    }
+  });
   //Double Binds, so when the user enters a value into the text box, the slider changes with it
   $("#minCol").on("change", function () {
     var inputValue = parseInt($(this).val());
@@ -52,18 +86,6 @@ $(function(){
       $("#minColSlider").slider("value", inputValue);
       $("input").trigger("submit");
     }
-  });
-  $("#minCol").on("focus", function () {
-    $(this).val("");
-  });
-  $("#maxCol").on("focus", function () {
-    $(this).val(""); 
-  });
-  $("#minRow").on("focus", function () {
-    $(this).val(""); 
-  });
-  $("#maxRow").on("focus", function () {
-    $(this).val(""); 
   });
   $("#maxCol").on("change", function () {
     var inputValue = parseInt($(this).val());
@@ -195,7 +217,7 @@ $("#addTab").click(function(){ //on addTab button create tab
   const elements = document.querySelectorAll('#tabs ul li');
   const count = elements.length;
   $("#tabs ul").append(
-    "<li><input type='checkbox'><a href='#tab-" + num_tabs + "'>TAB " + "</a><span class = 'ui-icon ui-icon-close'>Remove</span></li>"//creates tab
+    "<li><input type='checkbox'><a href='#tab-" + num_tabs + "'>" + minCol + "x" + maxCol + " : " + minRow + "x" + maxRow + "</a><span class = 'ui-icon ui-icon-close'>Remove</span></li>"//creates tab
   );
   $("#tabs").append('<div id="tab-' + num_tabs + '">' + $("#table").html() + "</div>");//fills tab with table
   num_tabs++;//Increases tab number
