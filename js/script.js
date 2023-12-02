@@ -45,6 +45,35 @@ $(function(){
       $("input").trigger("submit");//submit when user done dragging
     },
   });
+  //Double Binds, so when the user enters a value into the text box, the slider changes with it
+  $("#minCol").on("change", function () {
+    var inputValue = parseInt($(this).val());
+    if (!isNaN(inputValue)) {
+      $("#minColSlider").slider("value", inputValue);
+      $("input").trigger("submit");
+    }
+  });
+  $("#maxCol").on("change", function () {
+    var inputValue = parseInt($(this).val());
+    if (!isNaN(inputValue)) {
+      $("#maxColSlider").slider("value", inputValue);
+      $("input").trigger("submit");
+    }
+  });
+  $("#minRow").on("change", function () {
+    var inputValue = parseInt($(this).val());
+    if (!isNaN(inputValue)) {
+      $("#minRowSlider").slider("value", inputValue);
+      $("input").trigger("submit");
+    }
+  });
+  $("#maxRow").on("change", function () {
+    var inputValue = parseInt($(this).val());
+    if (!isNaN(inputValue)) {
+      $("#maxRowSlider").slider("value", inputValue);
+      $("input").trigger("submit");
+    }
+  });
 });
 //validators
 $.validator.addMethod("greaterThan", function(value, element, param){//makes sure that a min value doesnt exceed a max value
