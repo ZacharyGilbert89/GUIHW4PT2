@@ -163,6 +163,7 @@ th:hover {/*Hover change color*/
 }
 #tabs a { /*Sets tab name to black*/
     color:black;
+    font-size: medium;
 }
 #tabs .ui-tabs-active{/*Active tab has different shade*/
     color:white;

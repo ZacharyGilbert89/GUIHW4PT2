@@ -11,9 +11,13 @@ let minRow = 0;
 let maxCol = 0;
 let maxRow = 0;
 
+let newMinCol = 0;
+let newMaxCol = 0; 
+let newMinRow = 0;
+let newMaxRow = 0;
+
 //Sliders
 $(function(){
-  
   $("#minColSlider").slider({
     min: -50, //min-max values
     max: 50,
@@ -46,13 +50,14 @@ $(function(){
       $("input").trigger("submit");//submit when user done dragging
     },
   });
-  //These will make it so when the user enters a value manually, and doesnt enter something, it will default back to 0, if it is entered, and left blank it will default to 0
+  //These will make it so when the user enters a value manually, and doesnt enter something, it will default back to 0, if it is entered, and left blank it will default to whatever was previously
   $("#minCol").on("focus", function () {
     $(this).val("");
   });
   $("#minCol").on("focusout", function () {
     if($(this).val() == "") {
-      $(this).val("0");
+      $(this).val(newMinCol);
+      $("input").trigger("submit");//force update
     }
   });
   $("#maxCol").on("focus", function () {
@@ -60,7 +65,8 @@ $(function(){
   });
   $("#maxCol").on("focusout", function () {
     if($(this).val() == "") {
-      $(this).val("0");
+      $(this).val(newMaxCol);
+      $("input").trigger("submit");//force update
     }
   });
   $("#minRow").on("focus", function () {
@@ -68,7 +74,8 @@ $(function(){
   });
   $("#minRow").on("focusout", function () {
     if($(this).val() == "") {
-      $(this).val("0");
+      $(this).val(newMinRow);
+      $("input").trigger("submit");//force update
     }
   });
   $("#maxRow").on("focus", function () {
@@ -76,7 +83,8 @@ $(function(){
   });
   $("#maxRow").on("focusout", function () {
     if($(this).val() == "") {
-      $(this).val("0");
+      $(this).val(newMaxRow);
+      $("input").trigger("submit");//force update
     }
   });
   //Double Binds, so when the user enters a value into the text box, the slider changes with it
@@ -109,6 +117,36 @@ $(function(){
     }
   });
 });
+//Creates tabs
+var num_tabs = $("tabs ul li").length + 1; //Tabs Counter
+$("#addTab").click(function(){ //on addTab button create tab
+  $("#tabs").tabs();
+  const elements = document.querySelectorAll('#tabs ul li');
+  const count = elements.length;
+  $("#tabs ul").append(
+    "<li><input type='checkbox'><a href='#tab-" + num_tabs + "'>" + newMinCol + " to " + newMaxCol + " X " + newMinRow + " to " + newMaxRow + "</a><span class = 'ui-icon ui-icon-close'>Remove</span></li>"//creates tab
+  );
+  $("#tabs").append('<div id="tab-' + num_tabs + '">' + $("#table").html() + "</div>");//fills tab with table
+  num_tabs++;//Increases tab number
+  $("#tabs").tabs("refresh");
+  $("#tabs").tabs({ active: (count - 1) });//sets current tab to new one
+});
+var tabs = $("#tabs").tabs(); //gets current tabs that are open
+tabs.delegate("span.ui-icon-close", "click", function() { //closes out tab when selecting x button on tab
+  $("#tabs").tabs("refresh");
+  var panelId = $(this).closest("li").remove().attr("aria-controls"); //deletes tab
+  $("#" + panelId).remove();
+  tabs.tabs("refresh");
+});
+$("#deleteSelected").on("click",function(){ //closes out tabs that have the checkbox selected on each tab
+  $("#tabs").tabs("refresh");
+  $("input:checkbox").each(function() {
+      if ($(this).is(":checked")) {
+        var panelId = $(this).closest("li").remove().attr("aria-controls");//deletes tab
+        $("#" + panelId).remove();
+      }
+  });
+});
 //validators
 $.validator.addMethod("greaterThan", function(value, element, param){//makes sure that a min value doesnt exceed a max value
   return this.optional(element) || parseInt(value) >= parseInt($(param).val());
@@ -118,7 +156,6 @@ return !(value % 1);
 });
 $(document).ready(function() 
 {
-  
   $("#form").validate({
     rules: {
       minCol: {
@@ -170,6 +207,7 @@ $(document).ready(function()
     submitHandler: function(form) 
     {
       //Creates the TABLE
+      //alert("submitted");
       const table = document.createElement("table");
       const tabledata = document.getElementById("table");
       tabledata.innerHTML = ""; //clears previous table if there was one
@@ -178,8 +216,11 @@ $(document).ready(function()
       maxCol = document.getElementById("maxCol").value;
       minRow = document.getElementById("minRow").value;
       maxRow = document.getElementById("maxRow").value;
-      minRow -= 1; //offset
-      minCol -= 1; //offset
+
+      newMinCol = minCol;
+      newMaxCol = maxCol;
+      newMinRow = minRow;
+      newMaxRow = maxRow;
       //fills table
       minRow -= 1;//used this to offset so we can have a top row that shows each value
       minCol -= 1;//used this to offset so we can have a left column that shows each column value
@@ -210,34 +251,5 @@ $(document).ready(function()
     }
   });
 });
-//Creates tabs
-var num_tabs = $("tabs ul li").length + 1; //Tabs Counter
-$("#addTab").click(function(){ //on addTab button create tab
-  $("#tabs").tabs();
-  const elements = document.querySelectorAll('#tabs ul li');
-  const count = elements.length;
-  $("#tabs ul").append(
-    "<li><input type='checkbox'><a href='#tab-" + num_tabs + "'>" + minCol + "x" + maxCol + " : " + minRow + "x" + maxRow + "</a><span class = 'ui-icon ui-icon-close'>Remove</span></li>"//creates tab
-  );
-  $("#tabs").append('<div id="tab-' + num_tabs + '">' + $("#table").html() + "</div>");//fills tab with table
-  num_tabs++;//Increases tab number
-  $("#tabs").tabs("refresh");
-  $("#tabs").tabs({ active: (count - 1) });//sets current tab to new one
-});
-var tabs = $("#tabs").tabs(); //gets current tabs that are open
-tabs.delegate("span.ui-icon-close", "click", function() { //closes out tab when selecting x button on tab
-  $("#tabs").tabs("refresh");
-  var panelId = $(this).closest("li").remove().attr("aria-controls"); //deletes tab
-  $("#" + panelId).remove();
-  tabs.tabs("refresh");
-});
-$("#deleteSelected").on("click",function(){ //closes out tabs that have the checkbox selected on each tab
-  $("#tabs").tabs("refresh");
-  $("input:checkbox").each(function() {
-      if ($(this).is(":checked")) {
-        var panelId = $(this).closest("li").remove().attr("aria-controls");//deletes tab
-        $("#" + panelId).remove();
-      }
-  });
-});
+
 
