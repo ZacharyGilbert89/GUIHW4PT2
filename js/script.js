@@ -50,7 +50,7 @@ $(function(){
     slide: function (event, ui) {
       $("#maxRow").val(ui.value);
       $("input").trigger("submit");//submit when user done dragging
-    }, 
+    },
   });
   //These will make it so when the user enters a value manually, and doesnt enter something, it will default back to 0, if it is entered, and left blank it will default to whatever was previously
   $("#minCol").on("focus", function () {
