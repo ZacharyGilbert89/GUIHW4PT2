@@ -15,7 +15,9 @@ let newMinCol = 0;
 let newMaxCol = 0; 
 let newMinRow = 0;
 let newMaxRow = 0;
-
+$(document).ready(function (){
+  $("input").trigger("submit");
+});
 //Sliders
 $(function(){
   $("#minColSlider").slider({
@@ -117,36 +119,6 @@ $(function(){
     }
   });
 });
-//Creates tabs
-var num_tabs = $("tabs ul li").length + 1; //Tabs Counter
-$("#addTab").click(function(){ //on addTab button create tab
-  $("#tabs").tabs();
-  const elements = document.querySelectorAll('#tabs ul li');
-  const count = elements.length;
-  $("#tabs ul").append(
-    "<li><input type='checkbox'><a href='#tab-" + num_tabs + "'>" + newMinCol + " to " + newMaxCol + " X " + newMinRow + " to " + newMaxRow + "</a><span class = 'ui-icon ui-icon-close'>Remove</span></li>"//creates tab
-  );
-  $("#tabs").append('<div id="tab-' + num_tabs + '">' + $("#table").html() + "</div>");//fills tab with table
-  num_tabs++;//Increases tab number
-  $("#tabs").tabs("refresh");
-  $("#tabs").tabs({ active: (count - 1) });//sets current tab to new one
-});
-var tabs = $("#tabs").tabs(); //gets current tabs that are open
-tabs.delegate("span.ui-icon-close", "click", function() { //closes out tab when selecting x button on tab
-  $("#tabs").tabs("refresh");
-  var panelId = $(this).closest("li").remove().attr("aria-controls"); //deletes tab
-  $("#" + panelId).remove();
-  tabs.tabs("refresh");
-});
-$("#deleteSelected").on("click",function(){ //closes out tabs that have the checkbox selected on each tab
-  $("#tabs").tabs("refresh");
-  $("input:checkbox").each(function() {
-      if ($(this).is(":checked")) {
-        var panelId = $(this).closest("li").remove().attr("aria-controls");//deletes tab
-        $("#" + panelId).remove();
-      }
-  });
-});
 //validators
 $.validator.addMethod("greaterThan", function(value, element, param){//makes sure that a min value doesnt exceed a max value
   return this.optional(element) || parseInt(value) >= parseInt($(param).val());
@@ -207,7 +179,6 @@ $(document).ready(function()
     submitHandler: function(form) 
     {
       //Creates the TABLE
-      //alert("submitted");
       const table = document.createElement("table");
       const tabledata = document.getElementById("table");
       tabledata.innerHTML = ""; //clears previous table if there was one
@@ -251,5 +222,34 @@ $(document).ready(function()
     }
   });
 });
-
+//Creates tabs
+var num_tabs = $("tabs ul li").length + 1; //Tabs Counter
+$("#addTab").click(function(){ //on addTab button create tab
+  $("#tabs").tabs();
+  const elements = document.querySelectorAll('#tabs ul li');
+  const count = elements.length;
+  $("#tabs ul").append(
+    "<li><input type='checkbox'><a href='#tab-" + num_tabs + "'>" + newMinCol + " to " + newMaxCol + " X " + newMinRow + " to " + newMaxRow + "</a><span class = 'ui-icon ui-icon-close'>Remove</span></li>"//creates tab
+  );
+  $("#tabs").append('<div id="tab-' + num_tabs + '">' + $("#table").html() + "</div>");//fills tab with table
+  num_tabs++;//Increases tab number
+  $("#tabs").tabs("refresh");
+  $("#tabs").tabs({ active: (count - 1) });//sets current tab to new one
+});
+var tabs = $("#tabs").tabs(); //gets current tabs that are open
+tabs.delegate("span.ui-icon-close", "click", function() { //closes out tab when selecting x button on tab
+  $("#tabs").tabs("refresh");
+  var panelId = $(this).closest("li").remove().attr("aria-controls"); //deletes tab
+  $("#" + panelId).remove();
+  tabs.tabs("refresh");
+});
+$("#deleteSelected").on("click",function(){ //closes out tabs that have the checkbox selected on each tab
+  $("#tabs").tabs("refresh");
+  $("input:checkbox").each(function() {
+      if ($(this).is(":checked")) {
+        var panelId = $(this).closest("li").remove().attr("aria-controls");//deletes tab
+        $("#" + panelId).remove();
+      }
+  });
+});
 
