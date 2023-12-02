@@ -11,21 +11,6 @@ let minRow = 0;
 let maxCol = 0;
 let maxRow = 0;
 
-$(document).ready(function (){
-  //Clears previous values when user enters a new value
-  $("#minCol").on("focus", function () {
-    $(this).val("");
-  });
-  $("#maxCol").on("focus", function () {
-    $(this).val(""); 
-  });
-  $("#minRow").on("focus", function () {
-    $(this).val(""); 
-  });
-  $("#maxRow").on("focus", function () {
-    $(this).val(""); 
-  });
-});
 //Sliders
 $(function(){
   $("#minColSlider").slider({
@@ -67,6 +52,18 @@ $(function(){
       $("#minColSlider").slider("value", inputValue);
       $("input").trigger("submit");
     }
+  });
+  $("#minCol").on("focus", function () {
+    $(this).val("");
+  });
+  $("#maxCol").on("focus", function () {
+    $(this).val(""); 
+  });
+  $("#minRow").on("focus", function () {
+    $(this).val(""); 
+  });
+  $("#maxRow").on("focus", function () {
+    $(this).val(""); 
   });
   $("#maxCol").on("change", function () {
     var inputValue = parseInt($(this).val());
