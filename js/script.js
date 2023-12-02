@@ -122,21 +122,21 @@ $(document).ready(function()
   $("#form").validate({
     rules: {
       minCol: {
-          required: false,
+          required: true,
           noDecimal: true,
           range: [-50, 50]
       },
       maxCol: {
-        required: false,
+        required: true,
         range: [-50, 50],
         greaterThan: "#minCol"
       },
       minRow: {
-        required: false,
+        required: true,
         range: [-50, 50]
       },
       maxRow: {
-        required: false,
+        required: true,
         range: [-50, 50],
         greaterThan: "#minRow"
       }, 
